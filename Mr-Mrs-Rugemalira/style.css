@@ -1,0 +1,184 @@
+:root {
+  --sage-green: #8A8F7A;
+  --eucalyptus: #AEB7A3;
+  --dusty-blue: #9AA8B3;
+  --mist-blue: #D3DCE4;
+  --white: #ffffff;
+  --soft-pink: #FDE2E4;
+}
+
+body {
+  margin: 0;
+  font-family: 'Georgia', serif;
+  /* Gradient background */
+  background: linear-gradient(135deg, var(--mist-blue), var(--soft-pink));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  background: var(--white);
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 40px;
+  border-radius: 25px;
+  text-align: center;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 35px rgba(0,0,0,0.2);
+}
+
+/* Centered, round image */
+.centered-image {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    margin-bottom: 25px;
+}
+
+/* Headings */
+h1 {
+  color: var(--sage-green);
+  font-size: 2rem;
+  margin-bottom: 5px;
+  font-family: 'Georgia', serif;
+  letter-spacing: 2px;
+}
+
+h2 {
+  color: var(--dusty-blue);
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  font-style: italic;
+}
+
+/* Decorative lines */
+.decorative-line {
+  width: 60px;
+  height: 3px;
+  background: var(--eucalyptus);
+  margin: 10px auto 20px auto;
+  border-radius: 2px;
+}
+
+.decorative-line.small {
+  width: 40px;
+  height: 2px;
+  margin-bottom: 25px;
+}
+
+/* Paragraphs */
+p {
+  font-size: 1.1rem;
+  color: var(--sage-green);
+  margin: 8px 0;
+}
+
+.invite-text {
+  margin-top: 25px;
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--dusty-blue);
+}
+
+/* Button / link */
+a {
+  background: var(--eucalyptus);
+  color: white;
+  padding: 12px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: 0.3s;
+  margin-top: 15px;
+}
+
+a:hover {
+  background: var(--dusty-blue);
+  transform: translateY(-2px);
+}
+
+#countdown {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.countdown-box {
+  background: var(--eucalyptus);
+  color: white;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: transform 0.3s;
+}
+
+.countdown-box span {
+  font-size: 1.3rem;
+}
+
+.countdown-box small {
+  font-size: 0.7rem;
+  margin-top: 3px;
+}
+
+.countdown-box.animate {
+  transform: scale(1.1);
+}
+
+/* Responsive for mobile */
+@media (max-width: 500px) {
+  .countdown-box {
+    width: 55px;
+    height: 55px;
+  }
+
+  .countdown-box span {
+    font-size: 1rem;
+  }
+
+  .countdown-box small {
+    font-size: 0.6rem;
+  }
+}
+
+
+  .centered-image {
+    width: 140px;
+    height: 140px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  p, .invite-text {
+    font-size: 1rem;
+  }
+
+  #countdown {
+    font-size: 1rem;
+  }
+}
