@@ -108,6 +108,27 @@ a:hover {
   transform: translateY(-2px);
 }
 
+/* Countdown timer */
+.countdown-container {
+  margin-top: 30px;
+  text-align: center;
+  background: var(--mist-blue);
+  padding: 15px 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.countdown-container h3 {
+  margin-bottom: 10px;
+  color: var(--sage-green);
+}
+
+#countdown {
+  font-size: 1.2rem;
+  color: var(--dusty-blue);
+  font-weight: bold;
+}
+
 /* Responsive */
 @media (max-width: 500px) {
   .container {
@@ -131,24 +152,8 @@ a:hover {
   p, .invite-text {
     font-size: 1rem;
   }
-  .countdown-container {
-  margin-top: 30px;
-  text-align: center;
-  background: var(--mist-blue);
-  padding: 15px 20px;
-  border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
 
-.countdown-container h3 {
-  margin-bottom: 10px;
-  color: var(--sage-green);
-}
-
-#countdown {
-  font-size: 1.2rem;
-  color: var(--dusty-blue);
-  font-weight: bold;
-}
-
+  #countdown {
+    font-size: 1rem;
+  }
 }
