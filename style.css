@@ -20,6 +20,13 @@ body {
   border-radius: 20px;
   text-align: center;
   box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+
+  * Style the image */
+.centered-image {
+    border-radius: 50%;       /* makes it round */
+    max-width: 300px;         /* limit size */
+    height: auto;             /* maintain aspect ratio */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* optional shadow */
 }
 
 h1 {
