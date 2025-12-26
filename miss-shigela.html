@@ -28,7 +28,45 @@
     <p class="invite-text">
       Kindly join us to celebrate our special day
     </p>
+
+    <!-- Countdown Timer -->
+    <div class="countdown-container">
+      <h3>Countdown to Our Wedding</h3>
+      <div id="countdown">
+        <span id="days">00</span> Days 
+        <span id="hours">00</span> Hours 
+        <span id="minutes">00</span> Minutes 
+        <span id="seconds">00</span> Seconds
+      </div>
+    </div>
+
   </div>
+
+  <script>
+    // Set wedding date
+    const weddingDate = new Date("March 1, 2026 18:00:00").getTime();
+
+    const countdownFunction = setInterval(function() {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("days").innerText = days.toString().padStart(2, "0");
+      document.getElementById("hours").innerText = hours.toString().padStart(2, "0");
+      document.getElementById("minutes").innerText = minutes.toString().padStart(2, "0");
+      document.getElementById("seconds").innerText = seconds.toString().padStart(2, "0");
+
+      // If countdown is finished
+      if (distance < 0) {
+        clearInterval(countdownFunction);
+        document.getElementById("countdown").innerHTML = "Our Wedding Day is Here!";
+      }
+    }, 1000);
+  </script>
 
 </body>
 </html>
