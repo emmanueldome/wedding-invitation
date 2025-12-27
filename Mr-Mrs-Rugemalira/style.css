@@ -34,14 +34,15 @@ body {
   box-shadow: 0 20px 35px rgba(0,0,0,0.2);
 }
 
-/* Centered, round image */
 .centered-image {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    object-fit: cover;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-    margin-bottom: 25px;
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 6px solid #e6e6e6;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  margin: 20px auto;
+  display: block;
 }
 
 /* Headings */
