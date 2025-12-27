@@ -55,6 +55,27 @@
         </div>
       </div>
     </div>
+    <!-- RSVP Section -->
+<div class="rsvp-section">
+  <h3>RSVP</h3>
+  <p>Please confirm your attendance</p>
+
+  <form onsubmit="sendRSVP(event)">
+    <input type="text" id="guestName" placeholder="Your Full Name" required>
+
+    <select id="attendance" required>
+      <option value="">Will you attend?</option>
+      <option value="Yes, I will attend">Yes, I will attend</option>
+      <option value="Sorry, I can't attend">Sorry, I can't attend</option>
+    </select>
+
+    <input type="number" id="guests" placeholder="Number of guests" min="1">
+
+    <textarea id="message" placeholder="Optional message"></textarea>
+
+    <button type="submit">Send RSVP via WhatsApp</button>
+  </form>
+</div>
   </div>
 
   <script>
@@ -81,6 +102,30 @@
       }
     }, 1000);
   </script>
+  <script>
+function sendRSVP(event) {
+  event.preventDefault();
+
+  const name = document.getElementById("guestName").value;
+  const attendance = document.getElementById("attendance").value;
+  const guests = document.getElementById("guests").value || "Not specified";
+  const message = document.getElementById("message").value || "—";
+
+  const phoneNumber = "255783532235"; 
+
+  const text = 
+`Wedding RSVP:
+Name: ${name}
+Attendance: ${attendance}
+Number of Guests: ${guests}
+Message: ${message}`;
+
+  const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`;
+
+  window.open(whatsappURL, "_blank");
+}
+</script>
+
 
 </body>
 </html>
