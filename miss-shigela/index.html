@@ -14,7 +14,7 @@
     <h1>Wedding Invitation</h1>
     <div class="decorative-line"></div>
 
-    <h2>Miss Shigela</h2>
+    <h2>Miss Shigella</h2>
     <div class="decorative-line small"></div>
 
     <p><strong>Date:</strong> Sunday, 01 March 2026</p>
@@ -55,6 +55,26 @@
         </div>
       </div>
     </div>
+   <!-- RSVP Section -->
+<div class="rsvp-section">
+  <h3>RSVP</h3>
+  <p>Please confirm your attendance</p>
+
+  <form onsubmit="sendRSVP(event)">
+    <select id="attendance" required>
+      <option value="">Will you attend?</option>
+      <option value="Yes, I will attend">Yes, I will attend</option>
+      <option value="Sorry, I can't attend">Sorry, I can't attend</option>
+    </select>
+
+    <input type="number" id="guests" placeholder="Number of guests" min="1">
+
+    <textarea id="message" placeholder="Optional message"></textarea>
+
+    <button type="submit">Send RSVP via WhatsApp</button>
+  </form>
+</div>
+
   </div>
 
   <script>
@@ -81,6 +101,34 @@
       }
     }, 1000);
   </script>
+  <script>
+function sendRSVP(event) {
+  event.preventDefault();
+
+  const attendance = document.getElementById("attendance").value;
+  const guests = document.getElementById("guests").value || "Not specified";
+  const message = document.getElementById("message").value || "—";
+
+  const phoneNumber = "255783532235";
+
+  // Identify the invitee automatically
+  const inviteeName = "Mr & Mrs Rugemalira";
+
+  const text = 
+`Wedding RSVP
+Invitee: ${inviteeName}
+Attendance: ${attendance}
+Number of guests: ${guests}
+Message: ${message}`;
+
+  const whatsappURL =
+    `https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`;
+
+  window.open(whatsappURL, "_blank");
+}
+</script>
+
+
 
 </body>
 </html>
