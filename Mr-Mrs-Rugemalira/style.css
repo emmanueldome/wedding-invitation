@@ -203,6 +203,75 @@ a:hover {
     height: 140px;
   }
 
+  /* RSVP Section */
+.rsvp-section {
+  margin-top: 40px;
+  padding: 30px;
+  background: linear-gradient(135deg, #f8f9f7, #ffffff);
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.rsvp-section h3 {
+  color: var(--sage-green);
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+
+.rsvp-section p {
+  margin-bottom: 20px;
+  color: var(--dusty-blue);
+}
+
+.rsvp-section form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.rsvp-section input,
+.rsvp-section select,
+.rsvp-section textarea {
+  padding: 12px 15px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  font-family: inherit;
+  outline: none;
+  transition: 0.3s;
+}
+
+.rsvp-section input:focus,
+.rsvp-section select:focus,
+.rsvp-section textarea:focus {
+  border-color: var(--eucalyptus);
+  box-shadow: 0 0 0 2px rgba(174,183,163,0.3);
+}
+
+.rsvp-section textarea {
+  resize: none;
+  height: 90px;
+}
+
+.rsvp-section button {
+  background: var(--eucalyptus);
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.rsvp-section button:hover {
+  background: var(--dusty-blue);
+  transform: translateY(-2px);
+}
+
+
   h1 {
     font-size: 1.6rem;
   }
