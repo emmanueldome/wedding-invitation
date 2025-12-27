@@ -5,162 +5,198 @@
   --mist-blue: #D3DCE4;
   --white: #ffffff;
   --soft-pink: #FDE2E4;
+  --shadow-soft: rgba(0, 0, 0, 0.12);
+  --shadow-strong: rgba(0, 0, 0, 0.2);
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  font-family: 'Georgia', serif;
-  /* Gradient background */
+  font-family: "Georgia", serif;
   background: linear-gradient(135deg, var(--mist-blue), var(--soft-pink));
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  padding: 25px;
 }
 
+/* MAIN CARD */
 .container {
-  background: var(--white);
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 40px;
-  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.97);
+  max-width: 640px;
+  width: 100%;
+  padding: 45px 40px;
+  border-radius: 30px;
   text-align: center;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 25px 60px var(--shadow-soft);
+  animation: fadeUp 0.9s ease;
+  backdrop-filter: blur(6px);
+  position: relative;
 }
 
-.container:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 35px rgba(0,0,0,0.2);
+/* soft glow border */
+.container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 30px;
+  padding: 2px;
+  background: linear-gradient(
+    135deg,
+    var(--soft-pink),
+    var(--eucalyptus),
+    var(--dusty-blue)
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
 }
 
+/* entrance animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* IMAGE */
 .centered-image {
   width: 180px;
   height: 180px;
   object-fit: cover;
   border-radius: 50%;
-  border: 6px solid #e6e6e6;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-  margin: 20px auto;
+  border: 6px solid var(--white);
+  box-shadow: 0 12px 30px var(--shadow-strong);
+  margin: 10px auto 25px;
   display: block;
+  transition: transform 0.4s ease;
 }
 
-/* Headings */
+.centered-image:hover {
+  transform: scale(1.05);
+}
+
+/* HEADINGS */
 h1 {
   color: var(--sage-green);
-  font-size: 2rem;
-  margin-bottom: 5px;
-  font-family: 'Georgia', serif;
+  font-size: 2.1rem;
   letter-spacing: 2px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
 }
 
 h2 {
   color: var(--dusty-blue);
-  font-size: 1.5rem;
-  margin-bottom: 15px;
+  font-size: 1.6rem;
   font-style: italic;
+  margin: 10px 0 15px;
 }
 
-/* Decorative lines */
+/* DECORATIVE LINES */
 .decorative-line {
-  width: 60px;
+  width: 70px;
   height: 3px;
-  background: var(--eucalyptus);
-  margin: 10px auto 20px auto;
-  border-radius: 2px;
+  background: linear-gradient(to right, var(--eucalyptus), var(--dusty-blue));
+  margin: 12px auto 20px;
+  border-radius: 3px;
 }
 
 .decorative-line.small {
-  width: 40px;
+  width: 45px;
   height: 2px;
   margin-bottom: 25px;
 }
 
-/* Paragraphs */
+/* TEXT */
 p {
   font-size: 1.1rem;
   color: var(--sage-green);
-  margin: 8px 0;
+  margin: 10px 0;
+  line-height: 1.7;
 }
 
 .invite-text {
-  margin-top: 25px;
-  font-size: 1.2rem;
+  margin-top: 28px;
+  font-size: 1.15rem;
   font-style: italic;
-  color: var(--dusty-blue);
+  color: #666;
 }
 
-/* Button / link */
+/* LINKS / BUTTONS */
 a {
-  background: var(--eucalyptus);
-  color: white;
-  padding: 12px 30px;
-  border-radius: 30px;
-  text-decoration: none;
   display: inline-block;
+  margin-top: 18px;
+  padding: 14px 34px;
+  border-radius: 40px;
+  background: linear-gradient(135deg, var(--eucalyptus), var(--dusty-blue));
+  color: #fff;
+  text-decoration: none;
   font-weight: bold;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  transition: 0.3s;
-  margin-top: 15px;
+  letter-spacing: 0.4px;
+  box-shadow: 0 10px 25px var(--shadow-soft);
+  transition: 0.3s ease;
 }
 
 a:hover {
-  background: var(--dusty-blue);
-  transform: translateY(-2px);
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 15px 35px var(--shadow-strong);
 }
 
+/* COUNTDOWN */
 #countdown {
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 16px;
   flex-wrap: wrap;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .countdown-box {
-  background: var(--eucalyptus);
+  background: linear-gradient(135deg, var(--eucalyptus), var(--dusty-blue));
   color: white;
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
+  width: 78px;
+  height: 78px;
+  border-radius: 18px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-weight: bold;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  transition: transform 0.3s;
+  box-shadow: 0 10px 25px var(--shadow-soft);
+  transition: transform 0.3s ease;
+}
+
+.countdown-box:hover {
+  transform: translateY(-4px) scale(1.05);
 }
 
 .countdown-box span {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
+  font-weight: bold;
 }
 
 .countdown-box small {
   font-size: 0.7rem;
-  margin-top: 3px;
+  letter-spacing: 0.5px;
+  opacity: 0.9;
 }
 
-.countdown-box.animate {
-  transform: scale(1.1);
-}
-
-/* Responsive for mobile */
-@media (max-width: 500px) {
-  .countdown-box {
-    width: 55px;
-    height: 55px;
+/* MOBILE */
+@media (max-width: 520px) {
+  .container {
+    padding: 30px 22px;
   }
-
-  .countdown-box span {
-    font-size: 1rem;
-  }
-
-  .countdown-box small {
-    font-size: 0.6rem;
-  }
-}
-
 
   .centered-image {
     width: 140px;
@@ -168,18 +204,20 @@ a:hover {
   }
 
   h1 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
   }
 
   h2 {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
   }
 
-  p, .invite-text {
+  p,
+  .invite-text {
     font-size: 1rem;
   }
 
-  #countdown {
-    font-size: 1rem;
+  .countdown-box {
+    width: 64px;
+    height: 64px;
   }
 }
