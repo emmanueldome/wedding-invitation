@@ -106,27 +106,29 @@ function sendRSVP(event) {
   event.preventDefault();
 
   const attendance = document.getElementById("attendance").value;
-  const guests = document.getElementById("guests").value || "Not specified";
-  const message = document.getElementById("message").value || "—";
+  if (!attendance) {
+    alert("Please select whether you will attend.");
+    return;
+  }
 
+  const guests = document.getElementById("guests").value || "Not specified";
+  const message = document.getElementById("message").value || "No additional message";
+
+  const inviteeName = "Miss Shigella";
   const phoneNumber = "255783532235";
 
-  // Identify the invitee automatically
-  const inviteeName = "Mr & Mrs Rugemalira";
-
-  const text = 
-`Wedding RSVP
+  const text =
+`Wedding RSVP 💍
 Invitee: ${inviteeName}
 Attendance: ${attendance}
-Number of guests: ${guests}
+Guests: ${guests}
 Message: ${message}`;
 
-  const whatsappURL =
-    `https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`;
-
-  window.open(whatsappURL, "_blank");
+  const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`;
+  window.open(url, "_blank");
 }
 </script>
+
 
 
 
