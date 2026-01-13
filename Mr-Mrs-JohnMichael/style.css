@@ -24,7 +24,9 @@ body {
   padding: 25px;
 }
 
-/* MAIN CARD */
+/* =======================
+   MAIN CARD
+======================= */
 .container {
   background: rgba(255, 255, 255, 0.97);
   max-width: 640px;
@@ -38,7 +40,6 @@ body {
   position: relative;
 }
 
-/* soft glow border */
 .container::before {
   content: "";
   position: absolute;
@@ -59,7 +60,6 @@ body {
   pointer-events: none;
 }
 
-/* entrance animation */
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -71,7 +71,9 @@ body {
   }
 }
 
-/* IMAGE */
+/* =======================
+   IMAGE
+======================= */
 .centered-image {
   width: 180px;
   height: 180px;
@@ -88,7 +90,9 @@ body {
   transform: scale(1.05);
 }
 
-/* HEADINGS */
+/* =======================
+   HEADINGS
+======================= */
 h1 {
   color: var(--sage-green);
   font-size: 2.1rem;
@@ -104,7 +108,9 @@ h2 {
   margin: 10px 0 15px;
 }
 
-/* DECORATIVE LINES */
+/* =======================
+   DECORATIVE LINES
+======================= */
 .decorative-line {
   width: 70px;
   height: 3px;
@@ -119,7 +125,9 @@ h2 {
   margin-bottom: 25px;
 }
 
-/* TEXT */
+/* =======================
+   TEXT
+======================= */
 p {
   font-size: 1.1rem;
   color: var(--sage-green);
@@ -134,7 +142,9 @@ p {
   color: #666;
 }
 
-/* LINKS / BUTTONS */
+/* =======================
+   BUTTON / LINK
+======================= */
 a {
   display: inline-block;
   margin-top: 18px;
@@ -154,7 +164,9 @@ a:hover {
   box-shadow: 0 15px 35px var(--shadow-strong);
 }
 
-/* COUNTDOWN */
+/* =======================
+   COUNTDOWN
+======================= */
 #countdown {
   display: flex;
   justify-content: center;
@@ -192,7 +204,9 @@ a:hover {
   opacity: 0.9;
 }
 
-  /* RSVP Section */
+/* =======================
+   RSVP SECTION
+======================= */
 .rsvp-section {
   margin-top: 40px;
   padding: 30px;
@@ -260,7 +274,9 @@ a:hover {
   transform: translateY(-2px);
 }
 
-/* MOBILE */
+/* =======================
+   MOBILE RESPONSIVE
+======================= */
 @media (max-width: 520px) {
   .container {
     padding: 30px 22px;
@@ -270,7 +286,6 @@ a:hover {
     width: 140px;
     height: 140px;
   }
-
 
   h1 {
     font-size: 1.6rem;
