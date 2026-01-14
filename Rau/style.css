@@ -276,21 +276,36 @@ a:hover {
 /* =======================
    RSVP EXTRAS
 ======================= */
+/* =======================
+   RSVP EXTRAS - LANGUAGE BUTTONS
+======================= */
 .lang-switch {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 12px; /* slightly more spacing */
   margin-bottom: 18px;
 }
 
 .lang-switch button {
   border: 1px solid var(--eucalyptus);
-  background: transparent;
-  padding: 6px 16px;
-  border-radius: 20px;
+  background: var(--white); /* solid white background */
+  color: var(--sage-green);
+  padding: 8px 18px; /* slightly larger padding */
+  border-radius: 25px; /* rounder edges */
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 1rem; /* bigger and readable */
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px var(--shadow-soft);
 }
+
+.lang-switch button:hover {
+  background: var(--eucalyptus); /* background changes on hover */
+  color: var(--white);            /* text becomes white */
+  transform: scale(1.05);         /* subtle zoom effect */
+  box-shadow: 0 6px 18px var(--shadow-strong);
+}
+
 
 .question {
   font-weight: bold;
