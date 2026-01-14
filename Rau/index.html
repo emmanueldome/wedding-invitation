@@ -40,30 +40,28 @@
     </div>
   </div>
 
-  <!-- RSVP SECTION -->
+  <!-- RSVP -->
   <div class="rsvp-section">
     <h3 id="rsvp-title">RSVP</h3>
     <p id="rsvp-subtitle">Please confirm your attendance</p>
 
-    <!-- LANGUAGE SWITCH -->
     <div class="lang-switch">
       <button type="button" onclick="setLang('en')">EN</button>
       <button type="button" onclick="setLang('sw')">SW</button>
     </div>
 
     <form onsubmit="sendRSVP(event)">
-      
       <label class="question" id="q-attend">
         Will you attend our wedding?
       </label>
 
       <div class="attendance-options">
-        <label>
+        <label class="option-card">
           <input type="radio" name="attendance" value="I will attend" required>
           <span id="opt-yes">Yes, I will attend</span>
         </label>
 
-        <label>
+        <label class="option-card">
           <input type="radio" name="attendance" value="I will not attend">
           <span id="opt-no">Sorry, I can’t attend</span>
         </label>
@@ -79,65 +77,45 @@
   </div>
 </div>
 
-<!-- COUNTDOWN SCRIPT -->
 <script>
+/* COUNTDOWN */
 const weddingDate = new Date("March 1, 2026 18:00:00").getTime();
 setInterval(() => {
   const now = new Date().getTime();
   const d = weddingDate - now;
-
-  if (d < 0) {
-    document.getElementById("countdown").innerHTML =
-      "<strong>Our Wedding Day is Here! 🎉</strong>";
-    return;
-  }
-
-  document.getElementById("days").textContent = Math.floor(d / (1000*60*60*24));
-  document.getElementById("hours").textContent = Math.floor((d / (1000*60*60)) % 24);
-  document.getElementById("minutes").textContent = Math.floor((d / (1000*60)) % 60);
-  document.getElementById("seconds").textContent = Math.floor((d / 1000) % 60);
+  if (d < 0) return;
+  days.textContent = Math.floor(d / (1000*60*60*24));
+  hours.textContent = Math.floor((d / (1000*60*60)) % 24);
+  minutes.textContent = Math.floor((d / (1000*60)) % 60);
+  seconds.textContent = Math.floor((d / 1000) % 60);
 }, 1000);
-</script>
 
-<!-- LANGUAGE SWITCH SCRIPT -->
-<script>
-function setLang(lang) {
-  if (lang === "sw") {
-    document.getElementById("rsvp-title").innerText = "Thibitisha Hudhurio";
-    document.getElementById("rsvp-subtitle").innerText = "Tafadhali thibitisha kama utahudhuria";
-    document.getElementById("q-attend").innerText = "Je, utahudhuria harusi yetu?";
-    document.getElementById("opt-yes").innerText = "Ndiyo, nitahudhuria";
-    document.getElementById("opt-no").innerText = "Samahani, sitaweza kuhudhuria";
-    document.getElementById("guests").placeholder = "Idadi ya wageni";
-    document.getElementById("message").placeholder = "Ujumbe (hiari)";
-    document.getElementById("send-btn").innerText = "Tuma RSVP kupitia WhatsApp";
-  } else {
-    location.reload();
-  }
+/* LANGUAGE SWITCH */
+function setLang(lang){
+  if(lang==="sw"){
+    rsvp-title.innerText="Thibitisha Hudhurio";
+    rsvp-subtitle.innerText="Tafadhali thibitisha kama utahudhuria";
+    q-attend.innerText="Je, utahudhuria harusi yetu?";
+    opt-yes.innerText="Ndiyo, nitahudhuria";
+    opt-no.innerText="Samahani, sitaweza kuhudhuria";
+    guests.placeholder="Idadi ya wageni";
+    message.placeholder="Ujumbe (hiari)";
+    send-btn.innerText="Tuma RSVP kupitia WhatsApp";
+  } else location.reload();
 }
-</script>
 
-<!-- RSVP WHATSAPP SCRIPT -->
-<script>
-function sendRSVP(event) {
-  event.preventDefault();
-
-  const attendance = document.querySelector('input[name="attendance"]:checked').value;
-  const guests = document.getElementById("guests").value || "Not specified";
-  const message = document.getElementById("message").value || "—";
-
-  const phoneNumber = "255783532235";
-  const inviteeName = "Mr & Mrs Raulent Fadhili";
-
-  const text =
-`Wedding RSVP
-Invitee: ${inviteeName}
+/* WHATSAPP RSVP */
+function sendRSVP(e){
+  e.preventDefault();
+  const attendance=document.querySelector('input[name="attendance"]:checked').value;
+  const guestsVal=guests.value||"Not specified";
+  const msg=message.value||"-";
+  const text=`Wedding RSVP
+Invitee: Mr & Mrs Raulent Fadhili
 Attendance: ${attendance}
-Guests: ${guests}
-Message: ${message}`;
-
-  window.location.href =
-    `https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`;
+Guests: ${guestsVal}
+Message: ${msg}`;
+  window.location.href=`https://wa.me/255783532235?text=${encodeURIComponent(text)}`;
 }
 </script>
 
