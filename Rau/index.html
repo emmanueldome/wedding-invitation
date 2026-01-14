@@ -8,127 +8,138 @@
 </head>
 <body>
 
-  <div class="container">
-    <img src="p&E.jpeg" alt="Wedding Picture" class="centered-image">
+<div class="container">
+  <img src="p&E.jpeg" alt="Wedding Picture" class="centered-image">
 
-    <h1>Wedding Invitation</h1>
-    <div class="decorative-line"></div>
+  <h1>Wedding Invitation</h1>
+  <div class="decorative-line"></div>
 
-    <h2>Mr & Mrs Raulent Fadhili</h2>
-    <div class="decorative-line small"></div>
+  <h2>Mr & Mrs Raulent Fadhili</h2>
+  <div class="decorative-line small"></div>
 
-    <p><strong>Date:</strong> Sunday, 01 March 2026</p>
-    <p><strong>Time:</strong> 18:00 PM</p>
-    <p><strong>Venue:</strong> Mbezi Garden Hotel, Dar es Salaam</p>
+  <p><strong>Date:</strong> Sunday, 01 March 2026</p>
+  <p><strong>Time:</strong> 18:00 PM</p>
+  <p><strong>Venue:</strong> Mbezi Garden Hotel, Dar es Salaam</p>
 
-    <a href="https://maps.google.com/?q=Mbezi+Garden+Hotel" target="_blank">
-      📍 View Venue Location
-    </a>
+  <a href="https://maps.google.com/?q=Mbezi+Garden+Hotel" target="_blank">
+    📍 View Venue Location
+  </a>
 
-    <p class="invite-text">
-      Kindly join us to celebrate our special day
-    </p>
+  <p class="invite-text">
+    Kindly join us to celebrate our special day
+  </p>
 
-    <!-- Countdown -->
-    <div class="countdown-container">
-      <h3>Countdown to Our Wedding</h3>
-
-      <div id="countdown">
-        <div class="countdown-box">
-          <span id="days">00</span>
-          <small>Days</small>
-        </div>
-
-        <div class="countdown-box">
-          <span id="hours">00</span>
-          <small>Hours</small>
-        </div>
-
-        <div class="countdown-box">
-          <span id="minutes">00</span>
-          <small>Minutes</small>
-        </div>
-
-        <div class="countdown-box">
-          <span id="seconds">00</span>
-          <small>Seconds</small>
-        </div>
-      </div>
+  <!-- COUNTDOWN -->
+  <div class="countdown-container">
+    <h3>Countdown to Our Wedding</h3>
+    <div id="countdown">
+      <div class="countdown-box"><span id="days">00</span><small>Days</small></div>
+      <div class="countdown-box"><span id="hours">00</span><small>Hours</small></div>
+      <div class="countdown-box"><span id="minutes">00</span><small>Minutes</small></div>
+      <div class="countdown-box"><span id="seconds">00</span><small>Seconds</small></div>
     </div>
-   <!-- RSVP Section -->
-<div class="rsvp-section">
-  <h3>RSVP</h3>
-  <p>Please confirm your attendance</p>
-
-  <form onsubmit="sendRSVP(event)">
-    <select id="attendance" required>
-      <option value="">Will you attend?</option>
-      <option value="Yes, I will attend">Yes, I will attend</option>
-      <option value="Sorry, I can't attend">Sorry, I can't attend</option>
-    </select>
-
-    <input type="number" id="guests" placeholder="Number of guests" min="1">
-
-    <textarea id="message" placeholder="Optional message"></textarea>
-
-    <button type="submit">Send RSVP via WhatsApp</button>
-  </form>
-</div>
-
   </div>
 
-  <script>
-    const weddingDate = new Date("March 1, 2026 18:00:00").getTime();
+  <!-- RSVP SECTION -->
+  <div class="rsvp-section">
+    <h3 id="rsvp-title">RSVP</h3>
+    <p id="rsvp-subtitle">Please confirm your attendance</p>
 
-    const countdownFunction = setInterval(() => {
-      const now = new Date().getTime();
-      const distance = weddingDate - now;
+    <!-- LANGUAGE SWITCH -->
+    <div class="lang-switch">
+      <button type="button" onclick="setLang('en')">EN</button>
+      <button type="button" onclick="setLang('sw')">SW</button>
+    </div>
 
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    <form onsubmit="sendRSVP(event)">
+      
+      <label class="question" id="q-attend">
+        Will you attend our wedding?
+      </label>
 
-      document.getElementById("days").textContent = String(days).padStart(2, "0");
-      document.getElementById("hours").textContent = String(hours).padStart(2, "0");
-      document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
-      document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
+      <div class="attendance-options">
+        <label>
+          <input type="radio" name="attendance" value="I will attend" required>
+          <span id="opt-yes">Yes, I will attend</span>
+        </label>
 
-      if (distance < 0) {
-        clearInterval(countdownFunction);
-        document.getElementById("countdown").innerHTML =
-          "<strong>Our Wedding Day is Here! 🎉</strong>";
-      }
-    }, 1000);
-  </script>
-  <script>
+        <label>
+          <input type="radio" name="attendance" value="I will not attend">
+          <span id="opt-no">Sorry, I can’t attend</span>
+        </label>
+      </div>
+
+      <input type="number" id="guests" placeholder="Number of guests" min="1">
+      <textarea id="message" placeholder="Optional message"></textarea>
+
+      <button type="submit" id="send-btn">
+        Send RSVP via WhatsApp
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- COUNTDOWN SCRIPT -->
+<script>
+const weddingDate = new Date("March 1, 2026 18:00:00").getTime();
+setInterval(() => {
+  const now = new Date().getTime();
+  const d = weddingDate - now;
+
+  if (d < 0) {
+    document.getElementById("countdown").innerHTML =
+      "<strong>Our Wedding Day is Here! 🎉</strong>";
+    return;
+  }
+
+  document.getElementById("days").textContent = Math.floor(d / (1000*60*60*24));
+  document.getElementById("hours").textContent = Math.floor((d / (1000*60*60)) % 24);
+  document.getElementById("minutes").textContent = Math.floor((d / (1000*60)) % 60);
+  document.getElementById("seconds").textContent = Math.floor((d / 1000) % 60);
+}, 1000);
+</script>
+
+<!-- LANGUAGE SWITCH SCRIPT -->
+<script>
+function setLang(lang) {
+  if (lang === "sw") {
+    document.getElementById("rsvp-title").innerText = "Thibitisha Hudhurio";
+    document.getElementById("rsvp-subtitle").innerText = "Tafadhali thibitisha kama utahudhuria";
+    document.getElementById("q-attend").innerText = "Je, utahudhuria harusi yetu?";
+    document.getElementById("opt-yes").innerText = "Ndiyo, nitahudhuria";
+    document.getElementById("opt-no").innerText = "Samahani, sitaweza kuhudhuria";
+    document.getElementById("guests").placeholder = "Idadi ya wageni";
+    document.getElementById("message").placeholder = "Ujumbe (hiari)";
+    document.getElementById("send-btn").innerText = "Tuma RSVP kupitia WhatsApp";
+  } else {
+    location.reload();
+  }
+}
+</script>
+
+<!-- RSVP WHATSAPP SCRIPT -->
+<script>
 function sendRSVP(event) {
   event.preventDefault();
 
-  const attendance = document.getElementById("attendance").value;
+  const attendance = document.querySelector('input[name="attendance"]:checked').value;
   const guests = document.getElementById("guests").value || "Not specified";
   const message = document.getElementById("message").value || "—";
 
   const phoneNumber = "255783532235";
-
-  // Identify the invitee automatically
   const inviteeName = "Mr & Mrs Raulent Fadhili";
 
-  const text = 
+  const text =
 `Wedding RSVP
 Invitee: ${inviteeName}
 Attendance: ${attendance}
-Number of guests: ${guests}
+Guests: ${guests}
 Message: ${message}`;
 
-  const whatsappURL =
+  window.location.href =
     `https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`;
-
-  window.open(whatsappURL, "_blank");
 }
 </script>
-
-
 
 </body>
 </html>
