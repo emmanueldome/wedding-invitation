@@ -273,6 +273,58 @@ a:hover {
   background: var(--dusty-blue);
   transform: translateY(-2px);
 }
+/* =======================
+   RSVP EXTRAS
+======================= */
+.lang-switch {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.lang-switch button {
+  border: 1px solid var(--eucalyptus);
+  background: transparent;
+  padding: 6px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.question {
+  font-weight: bold;
+  margin-top: 10px;
+  color: var(--sage-green);
+}
+
+.attendance-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.option-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  transition: 0.3s;
+  background: #fff;
+}
+
+.option-card:hover {
+  border-color: var(--eucalyptus);
+  background: #f8f9f7;
+}
+
+.option-card input {
+  transform: scale(1.2);
+}
+
 
 /* =======================
    MOBILE RESPONSIVE
