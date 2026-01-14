@@ -282,9 +282,18 @@ a:hover {
 .lang-switch {
   display: flex;
   justify-content: center;
-  gap: 12px; /* slightly more spacing */
+  gap: 12px;
   margin-bottom: 18px;
+
+  /* NEW / UPDATED */
+  position: sticky;
+  top: 10px; /* stays near top */
+  z-index: 999;
+  background: rgba(255,255,255,0.9);
+  padding: 10px 0;
+  border-radius: 12px;
 }
+
 
 .lang-switch button {
   border: 1px solid var(--eucalyptus);
