@@ -283,15 +283,11 @@ a:hover {
   display: flex;
   justify-content: center;
   gap: 12px;
-  margin-bottom: 18px;
+  margin-bottom: 25px;
 
-  /* NEW / UPDATED */
-  position: sticky;
-  top: 10px; /* stays near top */
-  z-index: 999;
-  background: rgba(255,255,255,0.9);
-  padding: 10px 0;
-  border-radius: 12px;
+  background: #fff;
+  padding: 10px;
+  border-radius: 16px;
 }
 
 
