@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Wedding Invitation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+  <!-- IMAGE -->
+  <img src="p&E.jpeg" alt="Wedding Picture" class="centered-image">
+
+  <!-- LANGUAGE SWITCH -->
+    <div class="lang-switch">
+      <button type="button" onclick="setLang('en')">English</button>
+      <button type="button" onclick="setLang('sw')">Swahili</button>
+    </div>
+
+
+  <!-- HEADINGS -->
+  <h1 id="site-title">Wedding Invitation</h1>
+  <div class="decorative-line"></div>
+  <h2 id="couple-names">Mr Remingo Blatazary</h2>
+  <div class="decorative-line small"></div>
+
+  <!-- EVENT DETAILS -->
+  <p id="date"><strong>Date:</strong> Sunday, 01 March 2026</p>
+  <p id="time"><strong>Time:</strong> 18:00 PM</p>
+  <p id="venue"><strong>Venue:</strong> Mbezi Garden Hotel, Dar es Salaam</p>
+
+  <a id="view-venue" href="https://maps.google.com/?q=Mbezi+Garden+Hotel" target="_blank">
+    📍 View Venue Location
+  </a>
+
+  <p class="invite-text" id="invite-text">
+    Kindly join us to celebrate our special day
+  </p>
+
+  <!-- COUNTDOWN -->
+  <div class="countdown-container">
+    <h3 id="countdown-title">Countdown to Our Wedding</h3>
+    <div id="countdown">
+      <div class="countdown-box"><span id="days">00</span><small id="days-text">Days</small></div>
+      <div class="countdown-box"><span id="hours">00</span><small id="hours-text">Hours</small></div>
+      <div class="countdown-box"><span id="minutes">00</span><small id="minutes-text">Minutes</small></div>
+      <div class="countdown-box"><span id="seconds">00</span><small id="seconds-text">Seconds</small></div>
+    </div>
+  </div>
+
+  <!-- RSVP -->
+  <div class="rsvp-section">
+    <h3 id="rsvp-title">RSVP</h3>
+    <p id="rsvp-subtitle">Please confirm your attendance</p>
+
+    <form onsubmit="sendRSVP(event)">
+      <label class="question" id="q-attend">Will you attend our wedding?</label>
+
+      <div class="attendance-options">
+        <label class="option-card">
+          <input type="radio" name="attendance" value="I will attend" required>
+          <span id="opt-yes">Yes, I will attend</span>
+        </label>
+
+        <label class="option-card">
+          <input type="radio" name="attendance" value="I will not attend">
+          <span id="opt-no">Sorry, I can’t attend</span>
+        </label>
+      </div>
+
+      <input type="number" id="guests" placeholder="Number of guests" min="1">
+      <textarea id="message" placeholder="Optional message"></textarea>
+
+      <button type="submit" id="send-btn">Send RSVP via WhatsApp</button>
+    </form>
+  </div>
+
+</div>
+
+<script>
+/* ================= COUNTDOWN ================= */
+const weddingDate = new Date("March 1, 2026 18:00:00").getTime();
+
+setInterval(() => {
+  const now = new Date().getTime();
+  const d = weddingDate - now;
+  if (d < 0) return;
+
+  document.getElementById("days").textContent = Math.floor(d / (1000 * 60 * 60 * 24));
+  document.getElementById("hours").textContent = Math.floor((d / (1000 * 60 * 60)) % 24);
+  document.getElementById("minutes").textContent = Math.floor((d / (1000 * 60)) % 60);
+  document.getElementById("seconds").textContent = Math.floor((d / 1000) % 60);
+}, 1000);
+
+/* ================= LANGUAGE SWITCH ================= */
+function setLang(lang) {
+  if(lang === "sw") {
+    // Site content
+    document.getElementById("site-title").innerText = "Mwaliko wa Harusi";
+    document.getElementById("couple-names").innerText = "Bwana Remingo Baltazary";
+    document.getElementById("date").innerHTML = "<strong>Tarehe:</strong> Jumapili, 01 Machi 2026";
+    document.getElementById("time").innerHTML = "<strong>Muda:</strong> 18:00 PM";
+    document.getElementById("venue").innerHTML = "<strong>Ukumbi:</strong> Mbezi Garden Hotel, Dar es Salaam";
+    document.getElementById("view-venue").innerText = "📍 Angalia Eneo itakapofanyika Harusi";
+    document.getElementById("invite-text").innerText = "Karibu Tusherehekee Pamoja siku yetu Muhimu Maishani mwetu";
+    document.getElementById("countdown-title").innerText = "Hesabu ya Siku hadi Kufikia Harusi";
+    document.getElementById("days-text").innerText = "Siku";
+    document.getElementById("hours-text").innerText = "Saa";
+    document.getElementById("minutes-text").innerText = "Dakika";
+    document.getElementById("seconds-text").innerText = "Sekunde";
+
+    // RSVP section
+    document.getElementById("rsvp-title").innerText = "Thibitisha Uwepo wako";
+    document.getElementById("rsvp-subtitle").innerText = "Tafadhali thibitisha kama utahudhuria sherehe hii";
+    document.getElementById("q-attend").innerText = "Je, utahudhuria?";
+    document.getElementById("opt-yes").innerText = "Ndiyo, nitahudhuria";
+    document.getElementById("opt-no").innerText = "Samahani, sitaweza kuhudhuria";
+    document.getElementById("guests").placeholder = "Idadi ya wageni";
+    document.getElementById("message").placeholder = "Ujumbe (hiari)";
+    document.getElementById("send-btn").innerText = "Tuma RSVP kupitia WhatsApp";
+
+  } else {
+    // English
+    document.getElementById("site-title").innerText = "Wedding Invitation";
+    document.getElementById("couple-names").innerText = "Mr Remingo Baltazary";
+    document.getElementById("date").innerHTML = "<strong>Date:</strong> Sunday, 01 March 2026";
+    document.getElementById("time").innerHTML = "<strong>Time:</strong> 18:00 PM";
+    document.getElementById("venue").innerHTML = "<strong>Venue:</strong> Mbezi Garden Hotel, Dar es Salaam";
+    document.getElementById("view-venue").innerText = "📍 View Venue Location";
+    document.getElementById("invite-text").innerText = "Kindly join us to celebrate our special day";
+    document.getElementById("countdown-title").innerText = "Countdown to Our Wedding";
+    document.getElementById("days-text").innerText = "Days";
+    document.getElementById("hours-text").innerText = "Hours";
+    document.getElementById("minutes-text").innerText = "Minutes";
+    document.getElementById("seconds-text").innerText = "Seconds";
+
+    // RSVP section
+    document.getElementById("rsvp-title").innerText = "RSVP";
+    document.getElementById("rsvp-subtitle").innerText = "Please confirm your attendance";
+    document.getElementById("q-attend").innerText = "Will you attend our wedding?";
+    document.getElementById("opt-yes").innerText = "Yes, I will attend";
+    document.getElementById("opt-no").innerText = "Sorry, I can’t attend";
+    document.getElementById("guests").placeholder = "Number of guests";
+    document.getElementById("message").placeholder = "Optional message";
+    document.getElementById("send-btn").innerText = "Send RSVP via WhatsApp";
+  }
+}
+
+/* ================= WHATSAPP RSVP ================= */
+function sendRSVP(e) {
+  e.preventDefault();
+
+  const attendanceInput = document.querySelector('input[name="attendance"]:checked');
+  if (!attendanceInput) {
+    alert("Please select attendance option");
+    return;
+  }
+
+  const attendance = attendanceInput.value;
+  const guests = document.getElementById("guests").value || "Not specified";
+  const message = document.getElementById("message").value || "-";
+
+  const text =
+`Wedding RSVP
+Invitee: Mr Remingo Baltazry
+Attendance: ${attendance}
+Guests: ${guests}
+Message: ${message}`;
+
+  const url = `https://wa.me/255783532235?text=${encodeURIComponent(text)}`;
+  window.open(url, "_blank");
+}
+</script>
+
+</body>
+</html>
