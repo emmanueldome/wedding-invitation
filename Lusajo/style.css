@@ -273,6 +273,108 @@ a:hover {
   background: var(--dusty-blue);
   transform: translateY(-2px);
 }
+/* =======================
+   RSVP EXTRAS
+======================= */
+/* =======================
+   RSVP EXTRAS - LANGUAGE BUTTONS
+======================= */
+.lang-switch {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 25px;
+
+  background: #fff;
+  padding: 10px;
+  border-radius: 16px;
+}
+
+
+.lang-switch button {
+  border: 1px solid var(--eucalyptus);
+  background: var(--white); /* solid white background */
+  color: var(--sage-green);
+  padding: 8px 18px; /* slightly larger padding */
+  border-radius: 25px; /* rounder edges */
+  cursor: pointer;
+  font-size: 1rem; /* bigger and readable */
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px var(--shadow-soft);
+}
+
+.lang-switch button:hover {
+  background: var(--eucalyptus); /* background changes on hover */
+  color: var(--white);            /* text becomes white */
+  transform: scale(1.05);         /* subtle zoom effect */
+  box-shadow: 0 6px 18px var(--shadow-strong);
+}
+
+/* =======================
+   RSVP EXTRAS - LANGUAGE BUTTONS
+======================= */
+.lang-switch {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.lang-switch button {
+  border: 1px solid var(--eucalyptus);
+  background: var(--white);
+  color: var(--sage-green);
+  padding: 8px 18px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px var(--shadow-soft);
+}
+
+.lang-switch button:hover {
+  background: var(--eucalyptus);
+  color: var(--white);
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px var(--shadow-strong);
+}
+
+
+.question {
+  font-weight: bold;
+  margin-top: 10px;
+  color: var(--sage-green);
+}
+
+.attendance-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.option-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  transition: 0.3s;
+  background: #fff;
+}
+
+.option-card:hover {
+  border-color: var(--eucalyptus);
+  background: #f8f9f7;
+}
+
+.option-card input {
+  transform: scale(1.2);
+}
+
 
 /* =======================
    MOBILE RESPONSIVE
