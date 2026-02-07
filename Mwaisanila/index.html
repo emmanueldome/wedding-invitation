@@ -76,6 +76,8 @@
     <p id="rsvp-subtitle">Please confirm your attendance</p>
 
     <form onsubmit="sendRSVP(event)">
+      <input type="text" id="guestName" placeholder="Your Full Name" required>
+
 
      <label id="q-attend" class="question">
   Will you attend our wedding?
@@ -180,6 +182,9 @@ function setLang(lang){
 
     document.getElementById("opt-no").innerText =
       "Samahani, sitaweza";
+    
+    guestName.placeholder = "Jina Kamili";
+
 
     document.getElementById("guests").placeholder =
       "Idadi ya wageni";
@@ -201,29 +206,28 @@ function setLang(lang){
 /* ================= RSVP ================= */
 
 function sendRSVP(e){
-
   e.preventDefault();
 
-  const attend =
-    document.querySelector('input[name="attendance"]:checked').value;
+  const name = document.getElementById("guestName").value.trim();
+  const attend = document.querySelector('input[name="attendance"]:checked').value;
+  const g = guests.value || "Not specified";
+  const m = message.value || "-";
 
-  const g =
-    document.getElementById("guests").value || "Not specified";
+  if(name === ""){
+    alert("Please enter your name");
+    return;
+  }
 
-  const m =
-    document.getElementById("message").value || "-";
-
-  const txt =
-`Wedding RSVP
+  const txt = `WEDDING RSVP 💍
+Name: ${name}
 Attendance: ${attend}
-Guests: Mr & Mrs Emmanuel Mwaisanila
+Guests: ${g}
 Message: ${m}`;
 
   window.open(
     `https://wa.me/255783532235?text=${encodeURIComponent(txt)}`,
     "_blank"
   );
-
 }
 
 
