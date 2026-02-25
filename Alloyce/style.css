@@ -16,14 +16,20 @@
 body {
   margin: 0;
   font-family: "Georgia", serif;
-  background: linear-gradient(135deg, var(--mist-blue), var(--soft-pink));
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 25px;
-}
 
+  background: 
+    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+    url("../Assets/image/p-e.jpeg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 /* =======================
    MAIN CARD
 ======================= */
