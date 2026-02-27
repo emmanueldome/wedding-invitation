@@ -1,0 +1,383 @@
+:root {
+  --sage-green: #8A8F7A;
+  --eucalyptus: #AEB7A3;
+  --dusty-blue: #9AA8B3;
+  --mist-blue: #D3DCE4;
+  --white: #ffffff;
+  --soft-pink: #FDE2E4;
+  --shadow-soft: rgba(0, 0, 0, 0.12);
+  --shadow-strong: rgba(0, 0, 0, 0.2);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Georgia", serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+
+  background: 
+    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+    url("../Assets/image/p-e.jpeg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+/* =======================
+   MAIN CARD
+======================= */
+.container {
+  background: rgba(255, 255, 255, 0.97);
+  max-width: 640px;
+  width: 100%;
+  padding: 45px 40px;
+  border-radius: 30px;
+  text-align: center;
+  box-shadow: 0 25px 60px var(--shadow-soft);
+  position: relative;
+  animation: fadeUp 0.9s ease;
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 30px;
+  padding: 2px;
+  background: linear-gradient(
+    135deg,
+    var(--soft-pink),
+    var(--eucalyptus),
+    var(--dusty-blue)
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =======================
+   IMAGE (LONG PRESS TARGET)
+======================= */
+.centered-image {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 6px solid var(--white);
+  box-shadow: 0 12px 30px var(--shadow-strong);
+  margin: 10px auto 20px;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.centered-image:active {
+  transform: scale(0.96);
+}
+
+/* =======================
+   LANGUAGE SWITCH
+======================= */
+.lang-switch {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.lang-switch button {
+  border: 1.5px solid var(--eucalyptus);
+  background: var(--white);
+  color: var(--sage-green);
+  padding: 9px 22px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: bold;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px var(--shadow-soft);
+}
+
+.lang-switch button:hover {
+  background: var(--eucalyptus);
+  color: var(--white);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px var(--shadow-strong);
+}
+
+/* =======================
+   HEADINGS
+======================= */
+h1 {
+  color: var(--sage-green);
+  font-size: 2rem;
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+h2 {
+  color: var(--dusty-blue);
+  font-size: 1.5rem;
+  font-style: italic;
+  margin: 10px 0 15px;
+}
+
+/* =======================
+   DECORATIVE LINES
+======================= */
+.decorative-line {
+  width: 70px;
+  height: 3px;
+  background: linear-gradient(to right, var(--eucalyptus), var(--dusty-blue));
+  margin: 12px auto 20px;
+  border-radius: 3px;
+}
+
+.decorative-line.small {
+  width: 45px;
+  height: 2px;
+  margin-bottom: 25px;
+}
+
+/* =======================
+   TEXT
+======================= */
+p {
+  font-size: 1.05rem;
+  color: var(--sage-green);
+  margin: 10px 0;
+  line-height: 1.7;
+}
+
+.invite-text {
+  margin-top: 26px;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: #666;
+}
+
+/* =======================
+   LOCATION BUTTON
+======================= */
+a {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 14px 34px;
+  border-radius: 40px;
+  background: linear-gradient(135deg, var(--eucalyptus), var(--dusty-blue));
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 10px 25px var(--shadow-soft);
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px var(--shadow-strong);
+}
+
+/* =======================
+   COUNTDOWN
+======================= */
+#countdown {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.countdown-box {
+  background: linear-gradient(135deg, var(--eucalyptus), var(--dusty-blue));
+  color: white;
+  width: 78px;
+  height: 78px;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 10px 25px var(--shadow-soft);
+}
+
+.countdown-box span {
+  font-size: 1.35rem;
+  font-weight: bold;
+}
+
+.countdown-box small {
+  font-size: 0.7rem;
+  opacity: 0.9;
+}
+
+/* =======================
+   RSVP SECTION
+======================= */
+.rsvp-section {
+  margin-top: 42px;
+  padding: 30px;
+  background: linear-gradient(135deg, #f9faf8, #ffffff);
+  border-radius: 22px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.rsvp-section h3 {
+  color: var(--sage-green);
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+}
+
+.rsvp-section p {
+  color: var(--dusty-blue);
+  margin-bottom: 20px;
+}
+
+/* =======================
+   RSVP FORM
+======================= */
+.rsvp-section form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.rsvp-section input,
+.rsvp-section textarea {
+  padding: 13px 16px;
+  border-radius: 14px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  outline: none;
+  transition: 0.25s;
+}
+
+.rsvp-section input:focus,
+.rsvp-section textarea:focus {
+  border-color: var(--eucalyptus);
+  box-shadow: 0 0 0 2px rgba(174,183,163,0.25);
+}
+
+.rsvp-section textarea {
+  resize: none;
+  height: 90px;
+}
+
+/* =======================
+   RSVP OPTIONS
+======================= */
+.question {
+  font-weight: bold;
+  color: var(--sage-green);
+}
+
+.attendance-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.option-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 15px;
+  border-radius: 16px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  background: #fff;
+  transition: all 0.25s ease;
+}
+
+.option-card:hover {
+  border-color: var(--eucalyptus);
+  background: #f8f9f7;
+}
+
+.option-card input {
+  transform: scale(1.2);
+}
+
+/* =======================
+   RSVP SUBMIT BUTTON
+======================= */
+.rsvp-section button {
+  margin-top: 8px;
+  background: var(--eucalyptus);
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 35px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  transition: all 0.25s ease;
+}
+
+.rsvp-section button:hover {
+  background: var(--dusty-blue);
+  transform: translateY(-2px);
+}
+
+/* =======================
+   RECEPTIONIST BUTTON
+======================= */
+#receptionBtn {
+  width: 100%;
+  margin-top: 26px;
+  background: #2f6f4e;
+  color: #fff;
+  padding: 16px;
+  border-radius: 35px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+#receptionBtn:hover {
+  background: #24593e;
+}
+
+/* =======================
+   MOBILE RESPONSIVE
+======================= */
+@media (max-width: 520px) {
+  .container {
+    padding: 30px 22px;
+  }
+
+  .centered-image {
+    width: 140px;
+    height: 140px;
+  }
+
+  h1 { font-size: 1.55rem; }
+  h2 { font-size: 1.25rem; }
+
+  p, .invite-text {
+    font-size: 1rem;
+  }
+
+  .countdown-box {
+    width: 64px;
+    height: 64px;
+  }
+}
